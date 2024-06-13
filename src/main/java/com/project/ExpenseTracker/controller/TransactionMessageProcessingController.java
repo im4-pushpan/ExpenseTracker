@@ -1,6 +1,6 @@
 package com.project.ExpenseTracker.controller;
 
-import com.project.ExpenseTracker.service.HuggingFaceAIservice;
+import com.project.ExpenseTracker.service.HuggingFaceAIService;
 import com.project.ExpenseTracker.service.OllamaAIService;
 import com.project.ExpenseTracker.service.OpenAIService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class TransactionMessageProcessingController {
     private OllamaAIService ollamaAIService; // No implemented
 
     @Autowired
-    private HuggingFaceAIservice huggingFaceAIservice;
+    private HuggingFaceAIService huggingFaceAIservice;
 
     @PostMapping("/transaction")
     public ResponseEntity<Object> addTransaction(@RequestBody String prompt){

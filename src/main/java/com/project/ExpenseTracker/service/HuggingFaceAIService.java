@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-public class HuggingFaceAIservice {
+public class HuggingFaceAIService {
 
     @Autowired
     TransactionDetailsRepo transactionDetailsRepo;
@@ -28,11 +28,12 @@ public class HuggingFaceAIservice {
 
 
     public String generate(String message) {
+//        message.replace();
         HttpClient client = HttpClient.newHttpClient();
 
         // Create payload
         String payload = "{\"inputs\":\"[INST] You are a helpful code assistant. Your task is to generate a valid JSON object based on the given information:you are provide with text Like this text:"+
-        message+
+        message.replace("\"","")+
         " you need to extract details like accountNumber,type(debit/credit),transactionId,amount,beneficiaryName in text accountNumber is represented by A/C and TransactionId as Refno Just generate the JSON object without explanations like{transactionId:value,accountNumber:value,type:value,amount:value,beneficiaryName:value} if attribute is unknown make that attribute value as null[/INST]\"}";
 
         // Create request
