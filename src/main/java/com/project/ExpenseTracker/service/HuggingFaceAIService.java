@@ -28,13 +28,13 @@ public class HuggingFaceAIService {
 
 
     public String generate(String message) {
-//        message.replace();
+        System.out.println(message);
         HttpClient client = HttpClient.newHttpClient();
 
         // Create payload
         String payload = "{\"inputs\":\"[INST] You are a helpful code assistant. Your task is to generate a valid JSON object based on the given information:you are provide with text Like this text:"+
         message.replace("\"","")+
-        " you need to extract details like accountNumber,type(debit/credit),transactionId,amount,beneficiaryName in text accountNumber is represented by A/C and TransactionId as Refno Just generate the JSON object without explanations like{transactionId:value,accountNumber:value,type:value,amount:value,beneficiaryName:value} if attribute is unknown make that attribute value as null[/INST]\"}";
+        " you need to extract details like accountNumber,type(debit/credit),transactionId,amount,beneficiaryName in text accountNumber can be represented by A/C and TransactionId as Refno Just generate the JSON object without explanations like{transactionId:value,accountNumber:value,type:value,amount:value,beneficiaryName:value} if any attribute is unknown make that attribute value as null[/INST]\"}";
 
         // Create request
         HttpRequest request = HttpRequest.newBuilder()
